@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Dreamlines.Common\Dreamlines.Common.csproj" />
+    <ProjectReference Include="..\Dreamlines.Data\Dreamlines.Data.csproj" />
+    <ProjectReference Include="..\Dreamlines.Domain\Dreamlines.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

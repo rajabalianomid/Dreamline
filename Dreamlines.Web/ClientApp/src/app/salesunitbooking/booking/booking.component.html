@@ -1,0 +1,61 @@
+<div data-spy="scroll" data-target="#list-salesunit" data-offset="0" class="scrollspy-example">
+  <div>
+    <h4>Search</h4>
+  </div>
+</div>
+<hr class="mb-12">
+<form>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label>Booking id</label>
+      <input [(ngModel)]="bookingSearch.bookingId" name="bookingId" class="form-control" placeholder="Booking Id">
+    </div>
+    <div class="form-group col-md-6">
+      <label>Ship Name</label>
+      <input [(ngModel)]="bookingSearch.shipNames" name="shipName" class="form-control" placeholder="Ship Name">
+    </div>
+  </div>
+  <button type="button" class="btn btn-primary btn-lg btn-block" (click)="onClickSearch()">Search</button>
+</form>
+<hr class="mb-12">
+<div data-spy="scroll" data-target="#list-salesunit" data-offset="0" class="scrollspy-example">
+  <div class="row">
+    <div class="col-10">
+      <h6 id="list-item-{{saleUnitbookingResponse.data.salesUnit.id}}">List of bookings in {{saleUnitbookingResponse.data.salesUnit.name}}</h6>
+    </div>
+    <div class="col-2">
+      {{saleUnitbookingResponse.pageIndex+1}} of {{saleUnitbookingResponse.pageCount+1}}
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-12">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Booking Id</th>
+          <th scope="col">Ship Name</th>
+          <th scope="col">Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let book of saleUnitbookingResponse.data.bookings">
+          <td>{{book.id}}</td>
+          <td>{{book.shipName}}</td>
+          <td>{{book.price}}{{saleUnitbookingResponse.data.salesUnit.currency}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<hr class="mb-12">
+<nav aria-label="...">
+  <ul class="pagination">
+    <li class="page-item d-flex justify-content-start" [class.disabled]="!saleUnitbookingResponse.previous" (click)="onClickPrevoius()">
+      <button class="page-link" href="#" tabindex="-1" [attr.aria-disabled]="saleUnitbookingResponse.previous">Previous</button>
+    </li>
+    <li class="page-item d-flex justify-content-start" [class.disabled]="!saleUnitbookingResponse.next" (click)="onClickNext()">
+      <button class="page-link" [attr.aria-disabled]="saleUnitbookingResponse.next">Next</button>
+    </li>
+  </ul>
+</nav>

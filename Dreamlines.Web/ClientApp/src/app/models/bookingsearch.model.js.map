@@ -1,0 +1,1 @@
+{"version":3,"file":"bookingsearch.model.js","sourceRoot":"","sources":["bookingsearch.model.ts"],"names":[],"mappings":";;AAAA;IACE,uBAAmB,EAAc,EAAS,SAAwB,EAAS,SAAwB;QAAhF,mBAAA,EAAA,MAAc;QAAS,0BAAA,EAAA,gBAAwB;QAAS,0BAAA,EAAA,gBAAwB;QAAhF,OAAE,GAAF,EAAE,CAAY;QAAS,cAAS,GAAT,SAAS,CAAe;QAAS,cAAS,GAAT,SAAS,CAAe;IAAI,CAAC;IAC1G,oBAAC;AAAD,CAAC,AAFD,IAEC;AAFY,sCAAa"}

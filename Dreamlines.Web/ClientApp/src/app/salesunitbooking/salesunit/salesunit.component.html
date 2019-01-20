@@ -1,0 +1,10 @@
+<p *ngIf="!salesunitsResponse"><em>Loading...</em></p>
+<ul class="list-group mb-3" *ngIf="salesunitsResponse">
+  <li class="list-group-item d-flex justify-content-between lh-condensed" *ngFor="let unit of salesunitsResponse" (click)="onShowBookings(unit.id)">
+    <div>
+      <a href="#"><h6 class="my-0">{{unit.name}}</h6></a>
+      <small class="text-muted">Total :{{unit.price}}</small>
+    </div>
+    <span class="text-muted">{{unit.currency}}</span>
+  </li>
+</ul>
