@@ -12,7 +12,6 @@ namespace Dreamlines.Domain
         public string Country { get; set; }
         public string Currency { get; set; }
 
-        //public virtual Country Country { get; set; }
         public virtual ICollection<Ship> Ships
         {
             get => _ships ?? (_ships = new List<Ship>());
