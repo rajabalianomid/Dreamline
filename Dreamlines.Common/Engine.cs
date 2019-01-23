@@ -39,27 +39,6 @@ namespace Dreamlines.Common
         }
 
         /// <summary>
-        /// Run startup tasks
-        /// </summary>
-        /// <param name="typeFinder">Type finder</param>
-        protected virtual void RunStartupTasks(ITypeFinder typeFinder)
-        {
-            ////find startup tasks provided by other assemblies
-            //var startupTasks = typeFinder.FindClassesOfType<IStartupTask>();
-
-            ////create and sort instances of startup tasks
-            ////we startup this interface even for not installed plugins. 
-            ////otherwise, DbContext initializers won't run and a plugin installation won't work
-            //var instances = startupTasks
-            //    .Select(startupTask => (IStartupTask)Activator.CreateInstance(startupTask))
-            //    .OrderBy(startupTask => startupTask.Order);
-
-            ////execute tasks
-            //foreach (var task in instances)
-            //    task.Execute();
-        }
-
-        /// <summary>
         /// Register dependencies using Autofac
         /// </summary>
         /// <param name="DreamlinesConfig">Startup Dreamlines configuration parameters</param>
