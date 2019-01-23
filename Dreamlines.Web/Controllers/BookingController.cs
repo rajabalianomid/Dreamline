@@ -10,6 +10,7 @@ using Dreamlines.Service;
 using Dreamlines.Web.Model;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Dreamlines.Web.Mapping;
 
 namespace Dreamlines.Web.Controllers
 {
@@ -41,14 +42,8 @@ namespace Dreamlines.Web.Controllers
         {
             var foundSaleUnit = await _salesUnitService.GetByIdAsync(saleUnitId);
             var bookingViewModel = bookings.Data.Select(booking =>
-            _mapper.Map<Booking, BookingViewModel>(booking, c => c.ConfigureMap()
-                .ForMember(s => s.ShipName, d => d.MapFrom(f => f.Ship.Name))
-                .ForMember(s => s.Currency, d => d.MapFrom(f => f.Ship.SalesUnit.Currency))));
-            var saleUnitViewModel = _mapper.Map<SalesUnit, SalesUnitViewModel>(foundSaleUnit, c => c.ConfigureMap()
-                .ForMember(s => s.Currency, d => d.MapFrom(f => f.Currency))
-                .ForMember(s => s.Name, d => d.MapFrom(f => f.Name))
-                .ForMember(s => s.Id, d => d.MapFrom(f => f.Id))
-                .ForMember(s => s.Price, d => d.Ignore()));
+            _mapper.Map<Booking, BookingViewModel>(booking, c => c.ConfigureMap().Map()));
+            var saleUnitViewModel = _mapper.Map<SalesUnit, SalesUnitViewModel>(foundSaleUnit, c => c.ConfigureMap().Map());
             var saleUnitBookingViewModel = new SaleUnitBookingViewModel { Bookings = bookingViewModel, SalesUnit = saleUnitViewModel };
             var model = new Pagination<SaleUnitBookingViewModel>(bookings.PageIndex, bookings.PageSize, bookings.Count, saleUnitBookingViewModel);
             return model;

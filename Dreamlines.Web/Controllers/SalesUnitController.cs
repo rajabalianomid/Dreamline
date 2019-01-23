@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Dreamlines.Domain;
 using Dreamlines.Service;
+using Dreamlines.Web.Mapping;
 using Dreamlines.Web.Model;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -37,10 +38,7 @@ namespace Dreamlines.Web.Controllers
         {
             var salesUnitTotalPrice = _bookingService.GetTotalPriceBySalesUnitIds(salesUnits.Select(s => s.Id));
             var result = salesUnits.Select(su =>
-              _mapper.Map<SalesUnit, SalesUnitViewModel>(su, c => c.ConfigureMap()
-                 .ForMember(s => s.Currency, d => d.MapFrom(f => f.Currency))
-                 .ForMember(s => s.Name, d => d.MapFrom(f => f.Name))
-                 .ForMember(s => s.Id, d => d.MapFrom(f => f.Id))
+              _mapper.Map<SalesUnit, SalesUnitViewModel>(su, c => c.ConfigureMap().Map()
                  .ForMember(s => s.Price, d => d.MapFrom(f =>
                     salesUnitTotalPrice.Where(w => w.Key == su.Id).Select(sp => sp.Value).DefaultIfEmpty(0).FirstOrDefault())
                  )));
