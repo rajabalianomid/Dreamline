@@ -59,7 +59,6 @@ namespace Dreamlines.Common
 
             //create and sort instances of dependency registrars
             var instances = dependencyRegistrars
-                //.Where(dependencyRegistrar => PluginManager.FindPlugin(dependencyRegistrar)?.Installed ?? true) //ignore not installed plugins
                 .Select(dependencyRegistrar => (IDependencyRegistrar)Activator.CreateInstance(dependencyRegistrar))
                 .OrderBy(dependencyRegistrar => dependencyRegistrar.Order);
 
