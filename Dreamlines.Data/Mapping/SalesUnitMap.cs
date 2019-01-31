@@ -16,11 +16,7 @@ namespace Dreamlines.Data.Mapping
             builder.Property(salesunit => salesunit.Name).IsRequired().HasMaxLength(100);
             builder.Property(salesunit => salesunit.Country).IsRequired().HasMaxLength(50);
             builder.Property(salesunit => salesunit.Id).ValueGeneratedNever();
-
-            //builder.HasOne(salesunit => salesunit.Country)
-            //    .WithMany(country => country.SalesUnits)
-            //    .OnDelete(DeleteBehavior.SetNull)
-            //    .HasForeignKey(foreignkey => foreignkey.CountryId);
+            
             builder.HasMany(salesunit => salesunit.Ships)
                 .WithOne(ship => ship.SalesUnit)
                 .HasForeignKey(foreignkey => foreignkey.SalesUnitId)
